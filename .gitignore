@@ -1,0 +1,54 @@
+# --- Python & Bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Virtual Environments & IDEs ---
+.venv/
+venv/
+ENV/
+env/
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Jupyter Notebooks ---
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# --- Projekt-spezifisch: Daten & Outputs ---
+# Rohdaten und große CSV-Dateien nicht hochladen
+data/*.csv
+data/
+
+# Generierte Outputs (Modelle, Checkpoints, Logs)
+outputs/*.png
+outputs/
+checkpoints/
+logs/
+wandb/
+mlruns/
+
+# Optional: Jupyter Notebook Checkpoints
+*.ipynb_checkpoints
