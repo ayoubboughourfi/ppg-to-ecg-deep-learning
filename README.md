@@ -159,6 +159,7 @@ To take this project to the next level for an ETH Zurich research thesis, our pr
 ![Normal Sinus Rhythm](outputs/Gemini_Generated_Image_m5vrafm5vrafm5vr.jpeg)
 *Figure 7: Normal sinus rhythm reference used to establish the healthy baseline.*
 
+
 ![Conduction Delays](outputs/Gemini_Generated_Image_c8iz2ec8iz2ec8iz.jpeg)
 *Figure 8: Conduction delay target illustrating bifid QRS complexes and double R-peaks.*
 
