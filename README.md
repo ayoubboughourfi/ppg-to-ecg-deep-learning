@@ -31,17 +31,6 @@ The primary goal is converting optical pulse wave signals (PPG) into electrophys
 
 In the initial baseline run trained for only 5 epochs on raw, unnormalized samples (~10,000 non-overlapping windows), both models produced near-flat mean predictions. The MSE loss function penalized large errors near peaks, causing the network weights to collapse toward predicting the average baseline amplitude (~0 to 10).
 
-![Phase 1: Initial 5-Epoch Flat Output](final_ecg_model_comparison.png)
-*Figure 1: Initial baseline model output showing flat response across all 300 timesteps.*
-
----
-
-## 2. Experimental Progression: From Initial Baseline to Optimal Performance
-
-### Phase 1: Initial Baseline & Severe Underfitting (5 Epochs)
-
-In the initial baseline run trained for only 5 epochs on raw, unnormalized samples (~10,000 non-overlapping windows), both models produced near-flat mean predictions. The MSE loss function penalized large errors near peaks, causing the network weights to collapse toward predicting the average baseline amplitude (~0 to 10).
-
 ![Phase 1: Initial 5-Epoch Flat Output](outputs/final_ecg_model_comparison.png)
 *Figure 1: Initial baseline model output showing flat response across all 300 timesteps.*
 
@@ -137,3 +126,44 @@ python src/optimize.py
 # Execute main training pipeline
 python src/train.py
 ```
+--- 
+
+## 6. Next-Gen Roadmap: Diagnostic Abnormality Classification
+
+To take this project to the next level for an ETH Zurich research thesis, our primary objective moves beyond basic signal reconstruction toward **automated clinical pathology detection** directly from optical sensor data (e.g., smartwatches).
+
+```
+       +-------------------+       +-----------------------+       +-------------------------+
+       |  PPG Signal Input | ----> | DL Encoder + Attention| ----> | Reconstructed Waveform  |
+       +-------------------+       +-----------------------+       +-------------------------+
+                                                                                |
+                                                                                v
+                                                                   +-------------------------+
+                                                                   | Pathology Classifier    |
+                                                                   | (R-R', Tall T, Ischemia)|
+                                                                   +-------------------------+
+```
+### Key Methodological Upgrades
+
+1. **Custom Multi-Task Loss Function:** 
+   We modify the loss function to heavily penalize morphological deviations around critical diagnostic points (such as R-peak splits and extreme T-wave amplitudes) rather than relying solely on global MSE:
+   $$\mathcal{L}_{total} = \mathcal{L}_{MSE} + \lambda_{1}\mathcal{L}_{R-peak} + \lambda_{2}\mathcal{L}_{Morphology}$$
+
+2. **Targeted Clinical Pathologies & Visual Markers:**
+   The network pipeline will be evaluated against specific diagnostic edge cases saved in the project pipeline:
+
+   * **Normal Sinus Rhythm:** Standard PQRST morphology establishing baseline healthy features.
+   * **Conduction Delays:** Detection of bifid QRS complexes and double R-peaks ($R-R'$ patterns typical in Bundle Branch Blocks).
+   * **Ischemia & Electrolyte Imbalance:** High-fidelity reconstruction of hyperacute tall T-waves (exceeding R-peak height in hyperkalemia and acute myocardial infarction).
+
+![Normal Sinus Rhythm](outputs/Gemini_Generated_Image_c8iz2ec8iz2ec8iz.jpeg)
+*Figure 7: Normal sinus rhythm reference used to establish the healthy baseline.*
+
+![Conduction Delays](outputs/Gemini_Generated_Image_funbnvfunbnvfunb.jpeg)
+*Figure 8: Conduction delay target illustrating bifid QRS complexes and double R-peaks.*
+
+![Ischemia & Electrolyte Imbalance](outputs/Gemini_Generated_Image_m5vrafm5vrafm5vr.jpeg)
+*Figure 9: Ischemia and electrolyte imbalance target highlighting tall T-wave morphology.*
+
+3. **Downstream Diagnostic Classification Head:** 
+   Attach a lightweight multi-class classification head to the bottleneck latent space to automatically output diagnostic labels alongside the reconstructed time-series signal.
