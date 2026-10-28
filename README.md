@@ -156,13 +156,13 @@ To take this project to the next level for an ETH Zurich research thesis, our pr
    * **Conduction Delays:** Detection of bifid QRS complexes and double R-peaks ($R-R'$ patterns typical in Bundle Branch Blocks).
    * **Ischemia & Electrolyte Imbalance:** High-fidelity reconstruction of hyperacute tall T-waves (exceeding R-peak height in hyperkalemia and acute myocardial infarction).
 
-![Normal Sinus Rhythm](outputs/Gemini_Generated_Image_c8iz2ec8iz2ec8iz.jpeg)
+![Normal Sinus Rhythm](outputs/Gemini_Generated_Image_m5vrafm5vrafm5vr.jpeg)
 *Figure 7: Normal sinus rhythm reference used to establish the healthy baseline.*
 
-![Conduction Delays](outputs/Gemini_Generated_Image_funbnvfunbnvfunb.jpeg)
+![Conduction Delays](outputs/Gemini_Generated_Image_c8iz2ec8iz2ec8iz.jpeg)
 *Figure 8: Conduction delay target illustrating bifid QRS complexes and double R-peaks.*
 
-![Ischemia & Electrolyte Imbalance](outputs/Gemini_Generated_Image_m5vrafm5vrafm5vr.jpeg)
+![Ischemia & Electrolyte Imbalance](outputs/Gemini_Generated_Image_funbnvfunbnvfunb.jpeg)
 *Figure 9: Ischemia and electrolyte imbalance target highlighting tall T-wave morphology.*
 
 3. **Downstream Diagnostic Classification Head:** 
